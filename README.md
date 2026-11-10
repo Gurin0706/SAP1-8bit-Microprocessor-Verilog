@@ -11,26 +11,7 @@ The architecture features a single 8-bit common data bus utilizing **tri-state b
 
 ## 2. Hardware Architecture & Block Diagram
 
-```
-                 +---------------------------------------------+
-                 |               8-Bit Common Bus              |
-                 +----+--------+--------+--------+--------+----+
-                      |        ^        ^        ^        |
-                     (in)    (out)    (out)    (out)    (in)
-                      v        |        |        |        v
-                   +----+    +----+   +----+   +----+   +----+
-                   | MAR|    | PC |   | IR |   | A  |   |OUT |
-                   +----+    +----+   +----+   +----+   +----+
-                      |                 |        |        |
-                      v                 v        v        v
-                   +----+            Opcode   [ ALU ]  Display
-                   |RAM |               |        ^
-                   +----+               v        |
-                      |            +---------+ +----+
-                      +----------->| Control | | B  |
-                                   | Unit    | +----+
-                                   +---------+
-```
+![SAP-1 Block Diagram](docs/SAP1_architecture.png)
 
 ### Key Subsystem Components:
 * **Clock Generator (`clock.v`):** Generates clock enable (`ce`) and internal timing ticks; halts execution upon receiving the `HLT` signal.

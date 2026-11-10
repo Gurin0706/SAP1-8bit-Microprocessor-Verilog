@@ -6,6 +6,8 @@ This project presents a synthesizable **RTL implementation** and **functional ve
 The architecture features a single 8-bit common data bus utilizing **tri-state buffers** to eliminate data contention across shared registers and memory interfaces. A 6-stage finite state machine (FSM) sequence controls the instruction execution pipeline.
 
 ---
+> 📄 **Full Technical Report:** [Read SAP-1 Microprocessor Design Report (PDF)](docs/SAP1_Report.pdf)
+---
 
 ## 2. Hardware Architecture & Block Diagram
 

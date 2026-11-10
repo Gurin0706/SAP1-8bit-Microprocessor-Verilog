@@ -1,0 +1,41 @@
+`timescale 1ns / 1ps
+module tb_sap1;
+
+reg clk_in;
+reg rst;
+wire [7:0] out_display;
+
+// Instantiate Unit Under Test (UUT)
+sap1_top uut (
+.clk_in(clk_in),
+.rst(rst),
+.out_display(out_display)
+);
+
+// Clock Generation: 100MHz (10ns period)
+always #5 clk_in = ~clk_in;
+
+initial begin
+// Initialize Signals
+clk_in = 0;
+rst = 1;
+
+ // Apply Reset
+ #50;
+ rst = 0;
+ $display("[%0t ns] Reset released. SAP-1 Microprocessor started execution...", $time);
+
+ // Wait for output value or simulation timeout
+ #2000;
+ $display("[%0t ns] Final Output Register Display = %d (Hex: 0x%h)", $time, out_display, out_display);$finish;
+
+
+end
+
+// Waveform dump for GTKWave/EDA Tools
+initial begin
+$dumpfile("tb_sap1.vcd");
+$dumpvars(0, tb_sap1);
+end
+
+endmodule
